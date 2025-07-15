@@ -1,0 +1,30 @@
+{% extends 'project/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block content %}
+<div class="profile-card">
+    <div>
+        {% if profile.image %}
+            <img class="profile-avatar" src="{{ profile.image.url }}" alt="Rasm">
+        {% else %}
+            <img class="profile-avatar" src="{% static 'img/default.jpg' %}" alt="Rasm">
+        {% endif %}
+    </div>
+    <div class="profile-info">
+        <h2>{{ user.get_full_name }}</h2>
+        {% if user.phone %}
+            <p class="lead"><i class="bi bi-telephone-fill"></i> Tel: +998 {{ user.phone }}</p>
+        {% endif %}
+        <p class="lead"><i class="bi bi-envelope"></i> Email: {{ user.email }}</p>
+        <p class="lead"><i class="bi bi-person-bounding-box"></i> Username: {{ user.username }}</p>
+        <div class="profile-actions">
+            <a href="{% url 'change_profile' %}" class="btn btn-outline-primary">Change my info</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

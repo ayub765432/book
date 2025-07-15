@@ -1,0 +1,10 @@
+{% extends 'project/base.html' %}
+{% block content %}
+<h2>Haqiqatan ham o‘chirmoqchimisiz?</h2>
+<p><strong>{{ book.title }}</strong></p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Ha, o‘chirish</button>
+    <a href="{% url 'book_list' %}">Bekor qilish</a>
+</form>
+{% endblock %}

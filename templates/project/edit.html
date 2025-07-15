@@ -1,0 +1,17 @@
+{% extends 'project/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Edit
+{% endblock %}
+
+{% block content %}
+    {% include 'project/delete.html' %}
+    <form method="POST" action=""> {% comment  %} add url {% endcomment %}
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-outline-success">save</button>
+        <button type="button" class="btn btn-danger float-end" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+    </form>
+{% endblock %}
